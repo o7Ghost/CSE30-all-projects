@@ -1,0 +1,205 @@
+/*
+ * Filename: README
+ * Author: Qiao Jia Lu
+ * Userid: cs30xcq
+ * Date: 2/28/2018
+ */
+
+Description
+-----------
+
+  There are two program. the first one is spawn. this program spawns a number
+  of anagram from a user file that has words in it. This program also give
+  a default dictionary to spawn a anagram if the user doesn't have any.
+  The seoncd program is hunt. This program will get the anagram file in
+  user's folder and the user can type any word they want and the program
+  will find and match a anagram for the user.
+
+How to Compile
+--------------
+
+  To compile this program, simply navigate to pa3 folder by typing "cd pa3"
+  In this folder contains all the source files, then type "make" to compile
+
+How to Run
+----------
+  There are two programs that one can run
+  The first one is spawn. To run spawn one just type "./spawn" or
+  "./spawn <flag> <filename>" or "./spawn <flag> <filename> <flag> <filename>
+
+  the second one is hunt. to run the hunt program just type "./spawn 
+  <filename.ao>
+
+
+Normal Output
+_____________
+
+  Since there are two programs then there are two normal outputs
+
+  ./spawn normal output
+  ./spawn -h
+  Usage: ./spawn [-d dictionaryFile] [-a anagramFile] [-h]
+  Reads in a dictionary file and outputs an anagram file.
+  -d <dictionaryFile>   Name of the dictionary file to use;
+                        Each word in file is separated by a newline.
+                        Defaults to /usr/share/dict/words if unspecified.
+  -a <anagramFile>      The name of the anagram file to output;
+                        The extention ".ao" is automatically appended.
+                        Defaults to "anagramPrey.ao" if unspecified.
+  -h Prints the long usage.
+
+  ./spawn
+  Spawned anagram array with 99171 anagrams.
+
+  Spawned anagram file (anagramPrey.ao) with 99171 anagrams.
+
+  ./spawn -d sample.dict
+  Spawned anagram array with 23 anagrams.
+
+  Spawned anagram file (anagramPrey.ao) with 23 anagrams.
+
+  ./hunt normal output
+
+  ./hunt anagramPrey.ao
+  Reading anagram file (anagramPrey.ao) with 99171 anagrams.
+
+  Loaded anagram array with 99171 anagrams.
+
+  Enter a word to hunt for anagrams [^D to exit]: stop
+  Anagram(s) are: Post opts post pots spot tops
+
+  Enter a word to hunt for anagrams [^D to exit]: ptso
+  Anagram(s) are: Post opts post pots spot stop tops
+
+  Enter a word to hunt for anagrams [^D to exit]: SANTA
+  Anagram(s) are: Satan
+
+  Enter a word to hunt for anagrams [^D to exit]: santa
+  Anagram(s) are: Satan
+
+  Enter a word to hunt for anagrams [^D to exit]: snata
+  Anagram(s) are: Santa Satan
+
+  Enter a word to hunt for anagrams [^D to exit]: aaaaaaaaaaaaaaa
+  No anagrams found.
+
+  Enter a word to hunt for anagrams [^D to exit]: nagramas
+  Anagram(s) are: anagrams
+
+  Enter a word to hunt for anagrams [^D to exit]: ^D
+  cs30xyz@pi-cluster-001:~/pa3$
+
+Abnormal Output
+---------------
+
+  Therefore several abnormal output since there are two program
+
+  ./spawn abnormal output
+
+  case1: too many argument
+  
+  ./spawn extra
+
+  Extra operand 'extra'.
+
+  Usage: ./spawn [-d dictionaryFile] [-a anagramFile]
+  Try './spawn -h' for more information.
+
+  case2: invalid flags
+  
+  ./spawn -d
+  ./spawn: option requires an argument -- 'd'
+
+  Usage: ./spawn [-d dictionaryFile] [-a anagramFile]
+  Try './spawn -h' for more information.
+
+  case3: invalid files
+  ./spawn -d badfile
+
+  Error opening dictionary file (badfile); invalid file.
+
+  case4: permission died
+
+  ./spawn -d cantTouchThis
+
+  Error opening dictionary file (cantTouchThis); permission denied.
+
+  ./hunt abnormal output
+
+  case1: parse error or too many arguments
+
+  ./hunt
+
+  Usage: ./hunt anagramFile
+    anagramFile (file extension must end in ".ao")
+    (file size must be divisible by sizeof(Anagram))
+
+  case2: anagramfile doesn't end with .ao
+
+  ./hunt anagramPrey
+
+  Error opening anagram file (anagramPrey); must have .ao extension.
+
+  case3: None existance anagramFile
+
+  ./hunt badfile.ao
+
+  Error opening anagram file (badfile.ao); invalid file.
+
+  case4: Permission denied to file
+
+  ./hunt cantTouchThis.ao
+
+  Error opening anagram file (cantTouchThis.ao); permission denied.
+
+  case5: invalid anagram File
+
+  ./hunt notAnAnagramFile.ao
+
+  Error reading anagram file (notAnAnagramFile.ao); corrupt file (invalid file
+  length).
+
+  case6: corrupted file
+
+  ./hunt corrupt.ao
+
+  Error reading anagram file (corrupt.ao); corrupt file (invalid file length).
+
+How I Tested
+____________
+
+  i first start testing each program by writing a tester for every single
+  file that i wrote. i make sure each tester printes how the the result
+  that i expected. then i try the sample tests written in the write up
+  to see if i get the same output. last i use valgrind to check for
+  memory leak
+
+Questions
+---------
+
+  1.
+  The way to change color scheme in vim is go to insert mode first
+  then type ":colorscheme <color>". The command to change colorscheme
+  to desert is :colorscheme desert
+
+  2.
+  the way to go to a certain line number is go to insert mode first
+  then type ":<line number>" the command to move to line 42 is
+  ":42"
+
+  3.
+  the way to search for a certain pattern in vim is go to insert mode
+  then type "/<pattern>". the command for it to find the word Anagram
+  is "/Anagram"
+
+  4. 
+  the way to open a file in vim such that it opens to a certain line
+  number is "vim +<linenumber> <filename>". so to open foo.c to line 42
+  is vim +42 foo.c
+
+  5. 
+  the "Tab" key can autocomplete the command "vim pa3Strings"
+
+  6.
+  I would tell my friend that the tutors are very nice and they can help you
+  complete the code. Also i will add on that's how i did it.
