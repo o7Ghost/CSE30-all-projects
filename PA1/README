@@ -1,0 +1,163 @@
+/*
+ * Filename: README
+ * Author: Qiao Jia Lu
+ * UserId: csxcq
+ * Date: 1/31/2018
+ */
+
+Description
+___________
+
+	This program takes in five inputs first is the program's name
+the second is the width of the diamond, the third is the 
+height of the diamond, the fourth is the border of the diamond
+the fifth is the symbol of the diamond. after these input
+it prints out a diamond
+
+How to compile
+______________
+
+	To compile this program navigate to pa1 folder by typeing
+"cd pa1/" then type make
+
+Normal output
+_____________
+
+	Normal output is printed to stdout. An example of normal output
+would be the following:
+
+%%%%%%%%%%%%%%%
+%%%%%%%"%%%%%%%
+%%%%%%"""%%%%%%
+%%%%%"""""%%%%%
+%%%%"""""""%%%%
+%%%"""""""""%%%
+%%"""""""""""%%
+%"""""""""""""%
+%%"""""""""""%%
+%%%"""""""""%%%
+%%%%"""""""%%%%
+%%%%%"""""%%%%%
+%%%%%%"""%%%%%%
+%%%%%%%"%%%%%%%
+%%%%%%%%%%%%%%%
+
+Abnormal output
+_______________
+
+	Abnormal output would be printed to stderr. This will occur in the 
+following cases:
+
+case1 enter more than five argument: ex:./pa1 7 5 a b c
+Usage: ./pa1 width height border_char diamond_char
+width 	(must be odd within the range of [3 - 21])
+height 	(must be odd within the range of [1 - 19])
+   	(must be less than width)
+border_char (must be single char within the ASCII range [33 - 126])
+     	(must be different than diamond_char)
+      	diamond_char (must be single char within the ASCII range [33 - 126])
+       	(must be different than border_char)
+
+case2: enter no argument: ex:./pa1
+Usage: ./pa1 width height border_char diamond_char
+width 	(must be odd within the range of [3 - 21])
+height 	(must be odd within the range of [1 - 19])
+   	(must be less than width)
+border_char (must be single char within the ASCII range [33 - 126])
+     	(must be different than diamond_char)
+      	diamond_char (must be single char within the ASCII range [33 - 126])
+	(must be different than border_char)
+
+case3: width is not an integer ex:./pa1 7a 5 a b
+width(7a) must be an integer
+
+case4: input is too large ex:./pa1 777777777777777777777 5 a b
+converting width(777777777777777777777) in base(10) to long: Numerical
+result out of range
+
+case5: width and height are the same or heigh is larger than width
+ex:./pa1 7 7 a b
+
+height(7) must be less than width(7)
+
+case6: border symbol and diamond symbol are the same ex:./pa1 7 5 a a
+border_char(a) and diamond_char(a) must be different
+
+case7: input symbol out of range for diamond and border ex:./pa1 7 5 ' ' a
+border_char( ) must be within the ASCII range [33 - 126]
+
+case8: width or height are even numbers ex:./pa1 6 5 a b
+width(6) must be an odd number
+
+case9: border or diamond character are more than one symbol
+ex: ./pa1 7 5 a aa
+diamond_char(aa) must be a single character
+
+case10: userinput have multiple errors ex: ./pa1 6 9 a aa
+	width(6) must be an odd number
+	height(9) must be less than width(6)
+	diamond_char(aa) must be a single character
+
+Testing
+_______
+
+The way i tested my rem.s, isOdd and testcheckRange is to make 
+testfiles for example testrem,testisOdd and testcheckRange was 
+made to test if there is invalid inputs
+
+the way i tested my displaydiamond was to make a tesfile that
+calls the display diamond function and use visual debugging to see if
+the output matchinges to the write up
+
+the way i tested my main function is to first test for conversion error
+for both height and width by entering a very large number. then 
+i check if the the display output is what i expected.
+i also check in the public correct program to see
+if my output matches. next i test to see if my height and width
+are integers by typing an integeres with a character behind it
+and make sure i prints the right error message. i then check
+if my border and diamond character are the same by entering
+two of the same character. i also try inputs that are out
+of range for the characters to see if the diamond will accept 
+these characters. last i check if my main will catch multiple
+errors are once by entering multiple wrong inputs and then
+compare the display error message with the public tests.
+
+Question
+________
+
+1.
+x/s $r0
+
+2.
+x/d $r2
+
+3.
+p/x $r1
+
+4.
+a. p/d "the variable name that the function is assign to" my case is width
+b. p/d $r0
+
+5.
+x/c endptr
+
+6.
+p/s endptr
+
+7.
+p/d errno
+
+8.
+git status
+
+9.
+git checkout -- <FILENAME>
+
+10.
+git diff
+
+11.
+i just ask tutors if i needed help and ask questions on piazza
+if something that i don't know.
+
