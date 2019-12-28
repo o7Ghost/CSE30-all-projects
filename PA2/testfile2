@@ -1,0 +1,26 @@
+set 0xAAAAAAAA 0xAAAAAAAA
+set 2
+set 2 2 2
+toggle 0xFFFFFFFF 0xFFFFFFFF
+toggle 2 2 2
+toggle 2
+shift 2
+shift 68
+shift 2 2
+shift
+set
+toggle
+ripple
+ripple 5
+ripple 5 5
+ripple 5 5 5
+rotate
+rotate 2
+rotate 2 2
+rotate 2 2 2
+clear
+clear 2
+clear 2 2
+clear 2 2 2
+clear 2 2 2 2
+set 999999999999999999

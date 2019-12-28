@@ -1,0 +1,136 @@
+/*
+ * Filename: README
+ * Author Qiao jia Lu
+ * Userid: cs30xcq
+ * Date: 2/13/2018
+ */
+
+Description
+-----------
+  This program creates 64 lines that represents off lights. This program has
+  five different commands, which one can use to change the pattern of the
+  lights. Once one has use the command to change the pattern some of the light
+  will turn on or off. when the lights are turn on it will display a star
+  symbol. the user can also enter the commands in a file and then call the
+  program to display what pattern ones want to display.
+
+How To Compile
+______________
+  To compile this program, simply navigate to pa2 folder by typing "cd pa2"
+  In this folder contains all the source files. Then type "make" to compile
+
+How to Run
+----------
+  To run the program one just type "./pa2 <commands> <number> <number>"
+  to run it.
+  example:
+  ./pa2 set 99 99
+
+Normal Output
+-------------
+  Normal output will be printed to stdout. An example of normal output
+  would be the following:
+
+  ~/pa2$ ./pa2
+  set 0xf0f0f0f0 0x01010101
+**** ---- **** ---- **** ---- **** ---- ---- ---* ---- ---* ---- ---* ---- ---*
+
+  ~/pa2$ cat file
+  set 0xf0f0f0f0 0x01010101
+  ~/pa2$ ./pa2 file
+---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+**** ---- **** ---- **** ---- **** ---- ---- ---* ---- ---* ---- ---* ---- ---* 
+Abnormal Output
+______________
+
+  Abnormal output would be printed to stderr. This will occur in the
+  the following cases:
+
+  case1: enter commands that's is not in the 5 commands given in help
+
+  se
+  Bad command. Type "help" for more info
+
+  case2: enter a command that requires argument but no argument found
+
+  set
+  Argument(s) required for this command. Type "help" for more info.
+
+  case3: enter a command that requires two arguments but only one is found
+
+  set 0x00
+  A 2nd argument is required for this command.
+
+  case4: a command with argument but one of the argument is not an integer
+
+  set 0x00 9inchNails
+  "9inchNails" is not an integer
+
+  case5: a command with a argument that is too big to convert
+
+  set 9inchNails 9999999999999999999999
+  "9inchNails" is not an integer
+
+  case6: exceed the amount of argument needed for a command
+
+  set 0x00 0x00 extra
+  Extra argument entered: extra
+  Type "help" for more info
+
+  case7: too many agrument for a file
+
+  ./pa2 file file2
+   Usage: ./pa2 [filename]
+
+  case8: Too many arguments, some or all being invalid filename
+
+  ./pa2 fake_file file
+  Usage: ./pa2 [filename]
+
+  case9: Single Invalid filename (assuming file named fake_file 
+  doesn’t exist in current directory).
+
+  ./pa2 fake_file
+  fake_file: No such file or directory
+
+  case10: Permission denied to file (assuming we don’t have 
+  read permission to file named no_permission).
+
+  ./pa2 no_permission
+  no_permission: Permission denied
+
+  case11: Invalid commands inside file
+  
+  cat file
+  set
+
+  ./pa2 file
+  Argument(s) required for this command. Type "help" for more info
+ 
+ How i Tested
+ ------------
+
+ i first tested file errors by entering invalid file name and extra file name
+ then i test the commands when it is in the file by entering invalid commands
+ to see if the invalid cases would pop up. i then tested it with correct
+ output and compare it using diff. i then test it with raw commands and
+ arguments to see if the output is correct. i see if the output match with
+ visual debugged and then compare it using diff
+
+ Questions
+ ---------
+ 1. mv <oldname> <newname>
+ 2. cp <filename> <destination>
+ 3. it paste the highlighted text
+ 4. The vimrc file contains optional runtime configuration 
+    settings to initialize Vim when it starts
+    To create a vimrc simply navigate to home directory
+    and type vim .vimrc. to edit the file you can type
+    ~/.vimrc and press i to go into insert mode to edit the file
+ 5. shift d to cut and then press p to paste. this is done after
+ in command  mode
+ 6. /<pattern> to search for a string in command mode
+ 7. :set number in command mode
+ 8. cd ~/fubar
+ 9. chmod g+r <filename>
+ 10. to prevent being sue by others and create unique content to help people
