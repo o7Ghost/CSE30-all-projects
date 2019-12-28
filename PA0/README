@@ -1,0 +1,253 @@
+/*
+ * Filename: README
+ * Author: Qiao Jia Lu
+ * Userid: cs30xcq
+ * Date: 01/13/2018
+ */
+
+Description
+-----------
+  This program creates an array then prints it out forwards, backwards and
+  forward again. the program then adds three different numbers together and
+  display the equation of the addition and the sum.
+
+How to compile
+--------------
+
+  To compile this program, simply navigate to pa0 folder by typing "cd pa0"
+  this folder contains all the source files. Then type "make" to compile
+
+How to run
+----------
+  To run the program, first type "./", then follow by the name of the
+  executable file call "a.out".
+
+  For example;
+
+     ./a.out
+
+Normal output
+-------------
+  Normal output is printed to stdout. An example of a normal output would be
+like this:
+
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+
+28
+26
+24
+22
+20
+18
+16
+14
+12
+10
+8
+6
+4
+2
+0
+
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+
+The sum of 10 + 12 + 20 = 42
+
+abnormal output
+---------------
+  This program doesn't have abnormal output
+
+Testing
+-------
+
+  This program was tested first by putting the output of a.out into a file
+  and then compare the file with the correct solution using "diff output".
+  this program was also tested by using gdb. the file was tested by 
+  going through the code of file step by step and breaking at certain
+  lines to check if the variables are printing correctly and all
+  the counters are increasing correctly.
+
+Questions
+---------
+  0. Why is it considered an integrity violation if a student
+  submits code copied from someone/somewhere else?
+
+  A: it is consider integrity because it's not your work and you don't
+  learn anything from it
+
+  1. List the 3 compilation errors and 1 compilation warning 
+
+  compilation errors
+  -----------------
+  a. pa0.c:42:3: error: expected ';' before '}' token }
+     ERROR: missing a ; somewhere
+     This error occured in the file pa0.c at line 42. to
+     fix it simply add ";" at the end of the code of line 41
+
+  b. pa0.c:66:3: error: expected declaration or statement at end of input
+     return EXIT_SUCCESS;
+     ERROR: main wasn't closed by "}"
+     This error occured in the file pa0.c at line 66. to fix it
+     simply add "}" the end to close off main function
+
+  c. printInOrder.c:27:14: error: 'stdout' undeclared (first use in this
+     function) fprintf( stdout, "%d\n", array[k] );
+     ERROR: stdout library was not declared so the compiler
+     thinks it's a variable, therefore says is undeclared and first used.
+     This error occured in file printInOrder.c at line 27. To fix this
+     simple add #include <stdio.h> at line 11
+
+  warning errors
+  --------------
+    printInOrder.c:27:5 warning: implicit declaration of function
+    'fprintf' [-Wimplicate-function-declaration]
+    ERROR: warning for fprintf because library not implemented
+    this warning occured in the file printInOrder.c at line 27. to fix
+    this simply add #include <stdio.h> at line 11
+
+ 2. Why is the program not printing the correct output when you first
+    run it after successful compilation? how did you fix it? please
+    include all 5 runtime errors
+
+ A: the program is not runing because there is some logic error in
+ source code, and the other files. The way i fix it is to run gdb
+ and keep runing next and step to see how the code runs. here are
+ the 5 runtime erros listed below:
+
+ ERROR: infinity loop
+ This error occured in initArray.c at line 29-30. To fix this add a line
+ "i++" which increase the counter everytime it does through the while
+ loop
+
+ ERROR: segmentation fault
+ This error occured in printReversed.c at line 25. To fix this 
+ instead of increasing the counter j. one decreased it by changing
+ the code to "j--"
+
+ ERROR: printInOrder doesn't print in order but a random number
+ This error occured in printInOrder.c at line 27. To fix this,
+ delete the ';' beside the for loop
+
+ ERROR: the equation for the sum isn't display correctly
+ This error occured in pa0.c at line 64. To fix this, change all the v1
+ at line 64 in printf to v1, v2 and v3.
+
+ ERROR: sum is not display correctly
+ This error occured in sum.s at line 51. To fix this, change mov r3, r0
+ to r0, r3
+
+ 3. What line of C code do you see printed to the screen? 
+ A: what is print is on line 37 and the C code
+    is initArray( intArray, SIZE);
+
+ 4. What happens if you type nexti at this point? Why?
+ A: it display the C code initArray( intArray, SIZE);
+ and the machine code move r0, r3. The reason is that
+ nexti skips over functions and goes to the next line 
+ that is machine code. so it skips over the C function 
+ and goes to the next line that is a machine code. 
+ Therefore, it display a C code first then a machine code.
+
+ 5. Type continue. Which function are you in now?
+ A: when continue is typed it execute all the instruction till
+ the second break point which is at sum3 and steps into the
+ function sum3()
+
+ Q: Type p $r3. What number does it show?
+ A: when p $r3 is typed it shows 22
+
+ Q: Type nexti, then again type p $r3. 
+    What number does it show now? The line 
+    displayed in gdb is the line
+    about to be executed.
+ A: when nexti and p $r3 is typed it shows 42
+
+ 6. Using one of the commands discussed earlier, 
+    what is the value of r1? List the value and two different
+    commands you can use to determine the value.
+ A: the value of r1 is 12. p "variable" can be use to determine 
+ the value. the other method is the use "i r" which prints out
+ all the values of the registor.
+
+ 7. What is a breakpoint? How do you set one? (You did this earlier).
+ A: a break point makes a program stop at a specific point
+ that is specified by the user. the way to set one
+ is to type "break" follow by the line you want to break at.
+ In addition, you can type break by function name too. 
+
+ 8.  What function are you debugging if gdb displays the following?
+ A: the function that you are debugging is foobar and
+ is 32 bits away from the the function
+
+ 9. What is the difference between step and next? 
+     What is the difference between step/next and
+     stepi/nexti?
+ A: step runs into the function untill it changes the line
+ of source code. next doesn't trace into the function
+ but skips over it and execute the line after the skipping the
+ function. the difference between next/step and 
+ nexti/stepi is that nexti/stepi operates over machine code
+ instead of C code.
+
+ 10. What are $r0, $r1, etc, referring to?
+ A: $r0 and $r1 are referring to the register r0 and r1 in
+ code.
+
+ 11. Given an integer number n, how do you use 
+    it as the ASCII number and print out its corresponding
+    character in ASCII chart using printf? 
+ A: printf("%c", n);
+
+ 12. given any integer n, how do you use printf to print out
+     its corresponding hexadecimal and octal form without any
+     leading "0x" or "0"? how do you print out its hexadecimal form with
+     a leading "0x"? octal form with a leading "0"
+
+ A: printf("%o",n); (octal) printf("%x",n); (hexadecimal)
+ to print out without any leading "0" or "0x"
+
+ 
+ A: printf("%#o",n); (octal)  printf("%#x",n) (hexadecimal)
+ to print out with any leading "0" or "0x"
+
+ 13. Give one line of C code using these variables that
+ would print the follow line to stderr;
+
+ A: fprintf(stderr, "%s %i %c %.1f", rocks, value, plus, thirty);
+
+ 14. Give the C code that would print the follow to stdout;
+ A:
+ printf("The size of char is: %d\n", sizeof(char));
+ printf("The size of short is: %d\n", sizeof(short));
+ printf("The size of int is: %d\n", sizeof(int));
+ printf("The size of long is: %d\n", sizeof(long));
+ printf("The size of float is: %d\n", sizeof(float));
+
