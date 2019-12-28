@@ -1,0 +1,124 @@
+/*
+ * filename: README
+ * Author: Qiao Jia Lu
+ * Userid: cs30xcq
+ * Date: 3/14/2018
+ */
+
+Description
+-----------
+  This program will read in a file and display on screen in hex,
+  octal, or ASCII values. This program will also convert a file that
+  has hex number in it into characters. This program can also
+
+How to Compile
+--------------
+   To compile this program, simply navigate to pa3 folder by typing "cd pa4"
+   In this folder contains all the source files, then type "make" to compile
+
+How to Run
+----------
+  To run this program, first type "./myxd" then flags
+  example of the flag are -x for HEX -o for OCTAL -s for STRING
+  -c for ASCII. to convert a hex back to string the flag is -u
+
+  so an example would be "./myxd" <flag> <filename>
+  to convert hex to string ./myxd <flag> <file to write on> <file to read in>
+
+Normal Output
+-------------
+
+  The normal output will be printed to stdout and if the user
+  used -u flag option it will print to a file. 
+  An example of normal output would be the following
+
+  Print in hex
+  ./myxd infile
+  0000000: e213 af76 a72e 0027 8d3c b966 c098 09bf
+  0000010: fcc9 2533 53e2 df78 1631 916a af35 b655
+  0000020: 63b2 999a 1060 bec5 8f6f d865 fb74 e8bb
+  0000030: 6d28 6eff 93d6 526d ed3c 16ad 9e18 62af
+  0000040: cb1b e120 d5a0 9bad c005 90e4 fd66 150d
+  0000050: 6ca1 28ff d3e5 49d1 7c09 6ff4 a3f2 b9ac
+  0000060: 8493 39f4
+
+  print in octal
+  ./myxd -o infile 
+  0000000: 150145 154154 157012 150145 154154 157012 155171 040156 
+  0000020: 141155 145040 151163 040152 157163 145160 150012 012012 
+  0000040: 012012 012012 012012 012012 012012 012012 012012
+
+  print in string
+  ./myxd -s anagramPrey.ao      
+  VTSRONNLIIHGGEAA    
+  hello
+  OLLHE
+  i have a long string
+  VTSRONNLIIHGGEAA    
+  i have a very long string
+  YVVTSRRONNLIIHGGEEAA     
+  i have a super looooooooooooooooooooooo
+  VUSRPOOOOOOOOOOOOOOOOOOOOOOOLIHEEAA    
+  ooooog string
+  TSROOOOONIGG 
+  hello
+  OLLHE
+  ello
+  OLLHE
+  llo
+  OLLHE
+  lo
+  OLLHE
+  o
+  OLLHE
+  OLLHE
+  
+Abnormal Output
+---------------
+
+  There are several abnormal output and they are printed to stderr
+  first is too many argument
+  ./myxd infile extrafile
+  Error: Incorrect number of positional arguments.
+  ./myxd [-h] [-x | -o | -c | -s] [-l | -b] [-r range] [-u outfile] INFILE 
+
+  There are too many flags
+  ./myxd -x -c infile
+  Error: Only one of -x, -c, -o, -s may be specified.
+  ./myxd [-h] [-x | -o | -c | -s] [-l | -b] [-r range] [-u outfile] INFILE
+
+  Range is not valid
+  ./myxd -x -r 10 infile
+  Error: Incorrect format for range.
+  ./myxd [-h] [-x | -o | -c | -s] [-l | -b] [-r range] [-u outfile] INFILE
+
+  The file doesn't exist 
+  ./myxd nofile
+  nofile: No such file or directory
+
+  The end value of range is larger than the file size
+  ./myxd -r 10:400 smallfile
+  Error: Invalid range. Start and end must be > 0, end > start
+  ./myxd [-h] [-x | -o | -c | -s] [-l | -b] [-r range] [-u outfile] INFILE
+
+How I Tested
+------------
+  i first wrote tester files to test if my output is correct then i use
+  the public tester to compare output using my eyes. i then put
+  the output into a file and use diff to see if the output matches
+
+Question
+--------
+
+  1.
+  Use ctrl-a to increase it under the cursor or to the right. 
+  2.
+  press "~" to change to upper or lower case
+  3.
+  grep -n <bar> <foo.txt> find the pattern with line number
+  4.
+  to repeat a command in vim use .
+  5.
+  i usually if im stressed and don't have much time to finish
+  i skip work and work on my PA. i also drink and try to catch uo
+  on sleep so i don't stress as much.

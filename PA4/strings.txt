@@ -1,0 +1,27 @@
+i have a long string�
+hello
+i have a long string
+i have a very long string
+i have a super loooooooooooooooooooooooooooog string
+�hello
+h�ello
+he�llo
+hel�lo
+hell�o
+hello�
+åi have a long string
+iåhave a long string
+i håave a long string
+i haåve a long string
+i havåe a long string
+i haveå a long string
+i have aå long string
+i have a låong string
+i have a loång string
+i have a lonåg string
+i have a longå string
+i have a long såtring
+i have a long ståring
+i have a long stråing
+i have a long striång
+i have a long strinåg
